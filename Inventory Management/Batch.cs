@@ -64,7 +64,6 @@ namespace Inventory_Management
 
             return true;
         }
-
         public string GetAllProductInfor()
         { 
             string result = "";
@@ -85,6 +84,18 @@ namespace Inventory_Management
             return ProductInBatch;
 
         }
+
+        public Product GetProductByPrice(int price)
+        {
+            Product ProductInBatch = _product.FirstOrDefault(std => std.Price.Equals(price));
+            if (ProductInBatch == null)
+            {
+                return null;
+            }
+            return ProductInBatch;
+        }
+
+
     }
 }
 

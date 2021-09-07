@@ -22,7 +22,7 @@ namespace Inventory_Management
 			Console.WriteLine("\t\t\t 4. View all product information");
 			Console.WriteLine("\t\t\t 5. View product infomation by code");
 			Console.WriteLine("\t\t\t 6. View product infomation by Price");
-			Console.WriteLine("\t\t\t 7. View product infomation by Amount");
+			Console.WriteLine("\t\t\t 7. View product infomation by Product Type");
 			Console.WriteLine("\t\t\t 8. Exit Application");
 			Console.WriteLine("------------------------------------------------------------------------------");
 			Console.Write("Enter your choice : ");
@@ -99,6 +99,13 @@ namespace Inventory_Management
 			return int.Parse(Console.ReadLine());
 		}
 
+		public static int ViewProductByPrice()
+		{
+			Console.WriteLine("--------------------------------------------");
+			Console.Write("Price        : ");
+			return int.Parse(Console.ReadLine());
+		}
+
 		public static int EnterIntValue()
 		{
 			return int.Parse(Console.ReadLine());
@@ -117,7 +124,7 @@ namespace Inventory_Management
 			Console.WriteLine("Press Enter to re-enter");
 		}
 
-		public static void ShowMessage1(bool status)
+		public static void ShowMessage(bool status)
 		{
 			if (status)
 			{
@@ -134,10 +141,16 @@ namespace Inventory_Management
 			}
 		}
 
-		public static void ShowMessage2(bool status)
+		public static void ShowMessageRemove(bool status)
         {
 			Console.WriteLine("--------------------------------------------");
 			Console.WriteLine(">> This product has been removed out of stock <<");
+		}
+
+		public static void ShowMessageUpdate(bool status)
+		{
+			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine(">> This product has been updated to stock <<");
 		}
 
 		public static void ShowMessageExit()

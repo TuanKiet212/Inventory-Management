@@ -32,17 +32,17 @@ namespace Inventory_Management
                                  IO.EnterConditionOfProduct(),
                                  IO.EnterPrice()
                             );
-                            IO.ShowMessage1(true);
+                            IO.ShowMessage(true);
                         }
                         break;
 
                     case MenuOptions.REMOVE_PRODUCT_BY_CODE:
-                        IO.ShowMessage2(batch.RemoveProductByCode(IO.RemoveProductByCode()));
+                        IO.ShowMessageRemove(batch.RemoveProductByCode(IO.RemoveProductByCode()));
                         Console.ReadLine();
                         break;
 
                     case MenuOptions.UPDATE_PRODUCT_BY_CODE:
-                        IO.ShowMessage1
+                        IO.ShowMessageUpdate
                            (
                               batch.UpdateProductByCode
                                 (
@@ -67,11 +67,10 @@ namespace Inventory_Management
                         Console.ReadKey();
                         break;
 
-                    //case MenuOptions.PRINT_PRODUCT_INFOR_BY_PRICE:
-                    //    break;
-
-                    //case MenuOptions.PRINT_PRODUCT_INFOR_BY_AMOUNT:
-                    //    break;
+                    case MenuOptions.PRINT_PRODUCT_INFOR_BY_PRICE:
+                        IO.ToScreen(batch.GetProductByPrice(IO.ViewProductByPrice()).ToString());
+                        Console.ReadKey();
+                        break;
 
                     case MenuOptions.EXIT_PROGRAM:
                         IO.ShowMessageExit();
