@@ -85,7 +85,7 @@ namespace Inventory_Management
 			return double.Parse(Console.ReadLine());
 		}
 
-		public static int UpdateProductByCode()
+		public static int NewProductCode()
 		{
 			Console.WriteLine("--------------------------------------------");
 			Console.Write("Product Code        : ");
