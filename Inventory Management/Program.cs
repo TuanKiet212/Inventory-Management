@@ -46,7 +46,7 @@ namespace Inventory_Management
                            (
                               batch.UpdateProductByCode
                                 (
-                                   IO.EnterProductCode(),
+                                   IO.UpdateProductByCode(),
                                    IO.EnterProductName(),
                                    IO.EnterProductType(),
                                    IO.EnterAmount(),
