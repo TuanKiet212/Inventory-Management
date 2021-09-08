@@ -7,6 +7,10 @@ namespace Inventory_Management
         static void Main(string[] args)
         {
             Batch batch = new Batch(" ");
+            batch.AddProduct(1,"Phone", "Tech", 100, "Good", 1000);
+            batch.AddProduct(2,"Mouse", "Gear", 50, "Good", 50);
+            batch.AddProduct(3,"Laptop", "Tech", 1000, "Good", 1000);
+
             int inputMenu = MenuOptions.EMPTY;
             while (inputMenu != MenuOptions.EXIT_PROGRAM)
             {
@@ -78,7 +82,7 @@ namespace Inventory_Management
                         return;
 
                     default:
-                        IO.InputError();
+                        IO.ShowMessageError();
                         Console.ReadKey();
                         break;
                 }

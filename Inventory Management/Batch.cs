@@ -15,7 +15,7 @@ namespace Inventory_Management
         public const int PRINT_ALL_PRODUCT_INFOR = 4;
         public const int PRINT_PRODUCT_INFOR_BY_CODE = 5;
         public const int PRINT_PRODUCT_INFOR_BY_PRICE = 6;
-        public const int PRINT_PRODUCT_INFOR_BY_AMOUNT = 7;
+        public const int PRINT_PRODUCT_INFOR_BY_TYPE = 7;
         public const int EXIT_PROGRAM = 8;
     }
 
@@ -52,15 +52,15 @@ namespace Inventory_Management
 
         public bool UpdateProductByCode(int productCode, string productName, string productType, int amount, string conditionOfProduct, double price)
         {
-            Product ProductInBatch = _product.FirstOrDefault(s => s.ProductCode.Equals(productCode));
+            Product productInBatch = _product.FirstOrDefault(s => s.ProductCode.Equals(productCode));
 
-            if (ProductInBatch == null) return false;
+            if (productInBatch == null) return false;
 
-            ProductInBatch.ProductName = productName;
-            ProductInBatch.ProductType = productType;
-            ProductInBatch.Amount = amount;
-            ProductInBatch.ConditionOfProduct = conditionOfProduct;
-            ProductInBatch.Price = price;
+            productInBatch.ProductName = productName;
+            productInBatch.ProductType = productType;
+            productInBatch.Amount = amount;
+            productInBatch.ConditionOfProduct = conditionOfProduct;
+            productInBatch.Price = price;
 
             return true;
         }
@@ -76,25 +76,24 @@ namespace Inventory_Management
 
         public Product GetProductByCode(int productCode)
         {
-            Product ProductInBatch = _product.FirstOrDefault(std => std.ProductCode.Equals(productCode));
-            if (ProductInBatch == null)
+            Product productInBatch = _product.FirstOrDefault(std => std.ProductCode.Equals(productCode));
+            if (productInBatch == null)
             {
                 return null;
             }
-            return ProductInBatch;
+            return productInBatch;
 
         }
 
-        public Product GetProductByPrice(int price)
+        public Product GetProductByPrice(double price)
         {
-            Product ProductInBatch = _product.FirstOrDefault(std => std.Price.Equals(price));
-            if (ProductInBatch == null)
+            Product productInBatch = _product.FirstOrDefault(std => std.Price.Equals(price));
+            if (productInBatch == null)
             {
                 return null;
             }
-            return ProductInBatch;
+            return productInBatch;
         }
-
 
     }
 }

@@ -20,9 +20,9 @@ namespace Inventory_Management
 			Console.WriteLine("\t\t\t 2. Remove product by code");
 			Console.WriteLine("\t\t\t 3. Update product by code");
 			Console.WriteLine("\t\t\t 4. View all product information");
-			Console.WriteLine("\t\t\t 5. View product infomation by code");
-			Console.WriteLine("\t\t\t 6. View product infomation by Price");
-			Console.WriteLine("\t\t\t 7. View product infomation by Product Type");
+			Console.WriteLine("\t\t\t 5. View product information by code");
+			Console.WriteLine("\t\t\t 6. View product information by price");
+			Console.WriteLine("\t\t\t 7. View product information by type");
 			Console.WriteLine("\t\t\t 8. Exit Application");
 			Console.WriteLine("------------------------------------------------------------------------------");
 			Console.Write("Enter your choice : ");
@@ -43,7 +43,7 @@ namespace Inventory_Management
 			Product result = Batch._product.Find(x => x.ProductCode == pCode);
             if (result != null)
 			{
-				Console.WriteLine(">> Product Code is already exists, please try again!");
+				Console.WriteLine(">> Product Code is already exists, please try again! <<");
 				goto inputAgain;
 			}
 			return pCode;
@@ -99,11 +99,11 @@ namespace Inventory_Management
 			return int.Parse(Console.ReadLine());
 		}
 
-		public static int ViewProductByPrice()
+		public static double ViewProductByPrice()
 		{
 			Console.WriteLine("--------------------------------------------");
-			Console.Write("Price        : ");
-			return int.Parse(Console.ReadLine());
+			Console.Write("Price/1 (USD)        : ");
+			return double.Parse(Console.ReadLine());
 		}
 
 		public static int EnterIntValue()
@@ -114,14 +114,6 @@ namespace Inventory_Management
 		public static void ToScreen(string str)
 		{
 			Console.WriteLine(str);
-		}
-
-		public static void InputError()
-		{
-			Console.WriteLine("--------------------------------------------");
-			Console.WriteLine("WARNING!");
-			Console.WriteLine(">> You can only choose one of the 6 options in the menu, please try again <<");
-			Console.WriteLine("Press Enter to re-enter");
 		}
 
 		public static void ShowMessage(bool status)
@@ -157,6 +149,13 @@ namespace Inventory_Management
         {
 			Console.WriteLine("--------------------------------------------");
 			Console.WriteLine(">> Inventory Program Ended <<");
+		}
+
+		public static void ShowMessageError()
+		{
+			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine("WARNING!");
+			Console.WriteLine(">> You can only choose one of the 6 options in the menu, please try again <<");
 		}
 	}
 }
