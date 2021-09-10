@@ -74,7 +74,7 @@ namespace Inventory_Management
         }
         public string GetAllProductInfor()
         { 
-            string result = "";
+            string result = " ";
             foreach (var s in product)
             {
                 result = result + s.ToString();

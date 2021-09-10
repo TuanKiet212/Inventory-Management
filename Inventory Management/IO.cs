@@ -49,7 +49,7 @@ namespace Inventory_Management
 			bool status = batch.CheckProductCode(pCode);
             if (status)
 			{
-				Console.WriteLine(">> Product Code is already exists, please try again! <<");
+				Console.WriteLine(">> Product Code is already exists, please try again! ");
 				goto inputAgain;
 			}
 			return pCode;
