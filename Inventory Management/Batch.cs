@@ -13,15 +13,14 @@ namespace Inventory_Management
         public const int REMOVE_PRODUCT_BY_CODE = 2;
         public const int UPDATE_PRODUCT_BY_CODE = 3;
         public const int PRINT_ALL_PRODUCT_INFOR = 4;
-        public const int PRINT_PRODUCT_INFOR_BY_CODE = 5;
-        public const int PRINT_PRODUCT_INFOR_BY_PRICE = 6;
-        public const int PRINT_PRODUCT_INFOR_BY_TYPE = 7;
-        public const int EXIT_PROGRAM = 8;
+        public const int SEARCH_PRODUCT_BY_CODE = 5;
+        public const int SEARCH_PRODUCT_BY_PRICE = 6;
+        public const int EXIT_PROGRAM = 7;
     }
 
     public class Batch 
     {
-        public static List<Product> _product;
+        private List<Product> product;
 
         private Batch() 
         { 
@@ -30,21 +29,30 @@ namespace Inventory_Management
 
         public Batch(string name)
         {
-            _product = new List<Product>();
+            product = new List<Product>();
         }
 
-        public void AddProduct(int productCode, string productName, string productType, int amount, string conditionOfProduct, double price)
+        public void AddProduct(Product newProduct)
         {
-            Product newProduct = new Product(productCode, productName, productType, amount, conditionOfProduct, price);
-            _product.Add(newProduct);
+            product.Add(newProduct);
+        }
+
+        public bool CheckProductCode(int productCode)
+        {
+            Product ProductInBatch = product.FirstOrDefault(s => s.ProductCode.Equals(productCode));
+            if (ProductInBatch != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool RemoveProductByCode(int productCode)
         {
-            Product ProductInBatch = _product.FirstOrDefault(s => s.ProductCode.Equals(productCode));
+            Product ProductInBatch = product.FirstOrDefault(s => s.ProductCode.Equals(productCode));
             if (ProductInBatch != null)
             {
-                _product.Remove(ProductInBatch);
+                product.Remove(ProductInBatch);
                 return true;
             }
             return false;
@@ -52,7 +60,7 @@ namespace Inventory_Management
 
         public bool UpdateProductByCode(int productCode, string productName, string productType, int amount, string conditionOfProduct, double price)
         {
-            Product productInBatch = _product.FirstOrDefault(s => s.ProductCode.Equals(productCode));
+            Product productInBatch = product.FirstOrDefault(s => s.ProductCode.Equals(productCode));
 
             if (productInBatch == null) return false;
 
@@ -67,7 +75,7 @@ namespace Inventory_Management
         public string GetAllProductInfor()
         { 
             string result = "";
-            foreach (var s in _product)
+            foreach (var s in product)
             {
                 result = result + s.ToString();
             }
@@ -76,25 +84,13 @@ namespace Inventory_Management
 
         public Product GetProductByCode(int productCode)
         {
-            Product productInBatch = _product.FirstOrDefault(std => std.ProductCode.Equals(productCode));
-            if (productInBatch == null)
-            {
-                return null;
-            }
-            return productInBatch;
-
-        }
-
-        public Product GetProductByPrice(double price)
-        {
-            Product productInBatch = _product.FirstOrDefault(std => std.Price.Equals(price));
+            Product productInBatch = product.FirstOrDefault(std => std.ProductCode.Equals(productCode));
             if (productInBatch == null)
             {
                 return null;
             }
             return productInBatch;
         }
-
     }
 }
 

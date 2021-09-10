@@ -15,17 +15,16 @@ namespace Inventory_Management
 
 		public static int EnterMenuOption()
 		{
-			Console.WriteLine("------------------------------------------------------------------------------");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
 			Console.WriteLine("\t\t\t 1. Add new product to inventory");
 			Console.WriteLine("\t\t\t 2. Remove product by code");
 			Console.WriteLine("\t\t\t 3. Update product by code");
 			Console.WriteLine("\t\t\t 4. View all product information");
-			Console.WriteLine("\t\t\t 5. View product information by code");
-			Console.WriteLine("\t\t\t 6. View product information by price");
-			Console.WriteLine("\t\t\t 7. View product information by type");
-			Console.WriteLine("\t\t\t 8. Exit Application");
-			Console.WriteLine("------------------------------------------------------------------------------");
-			Console.Write("Enter your choice : ");
+			Console.WriteLine("\t\t\t 5. Search product information by code");
+			Console.WriteLine("\t\t\t 6. Search product information by price");
+			Console.WriteLine("\t\t\t 7. Exit Application");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
+			Console.Write("Enter your choice [1-7]: ");
 			return int.Parse(Console.ReadLine());
 		}
 
@@ -34,14 +33,21 @@ namespace Inventory_Management
 			return Console.ReadLine();
 		}
 
-		public static int EnterProductCode()
+		public static int EnterProductByCode()
+		{
+			Console.Write("Product Code         : ");
+			return int.Parse(Console.ReadLine());
+		}
+
+
+		public static int EnterAndCheckProductCode(Batch batch)
 		{
 			int pCode;
 			inputAgain:
 			Console.Write("Product Code         : ");
 			pCode = int.Parse(Console.ReadLine());
-			Product result = Batch._product.Find(x => x.ProductCode == pCode);
-            if (result != null)
+			bool status = batch.CheckProductCode(pCode);
+            if (status)
 			{
 				Console.WriteLine(">> Product Code is already exists, please try again! <<");
 				goto inputAgain;
@@ -51,7 +57,8 @@ namespace Inventory_Management
 
 		public static int RemoveProductByCode()
         {
-			Console.Write("Product Code         : ");
+			Console.WriteLine("--------------------------------------------");
+			Console.Write("Enter product code you want to remove        : ");
 			return int.Parse(Console.ReadLine());
 		}
 
@@ -88,22 +95,28 @@ namespace Inventory_Management
 		public static int NewProductCode()
 		{
 			Console.WriteLine("--------------------------------------------");
-			Console.Write("Product Code        : ");
+			Console.Write("Enter product code you want to update        : ");
 			return int.Parse(Console.ReadLine());
 		}
 
 		public static int ViewProductByCode()
 		{
 			Console.WriteLine("--------------------------------------------");
-			Console.Write("Product Code        : ");
+			Console.Write("Enter product code you want to check        : ");
 			return int.Parse(Console.ReadLine());
 		}
 
 		public static double ViewProductByPrice()
 		{
 			Console.WriteLine("--------------------------------------------");
-			Console.Write("Price/1 (USD)        : ");
+			Console.Write("Enter price you want to check        : ");
 			return double.Parse(Console.ReadLine());
+		}
+
+		public static string ViewProductByType()
+		{
+			Console.Write("--------------------------------------------");
+			return Console.ReadLine();
 		}
 
 		public static int EnterIntValue()

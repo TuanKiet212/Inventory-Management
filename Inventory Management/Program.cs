@@ -6,12 +6,9 @@ namespace Inventory_Management
     {
         static void Main(string[] args)
         {
-            Batch batch = new Batch(" ");
-            batch.AddProduct(1,"Phone", "Tech", 100, "Good", 1000);
-            batch.AddProduct(2,"Mouse", "Gear", 50, "Good", 50);
-            batch.AddProduct(3,"Laptop", "Tech", 1000, "Good", 1000);
+            Batch batch = new Batch("");
+            int inputMenu = 0;
 
-            int inputMenu = MenuOptions.EMPTY;
             while (inputMenu != MenuOptions.EXIT_PROGRAM)
             {
                 Console.Clear();
@@ -19,7 +16,7 @@ namespace Inventory_Management
                 inputMenu = IO.EnterMenuOption();
                 switch (inputMenu)
                 {
-                    case MenuOptions.ADD_PRODUCT_INFOR:
+                    case 1:
                         Console.WriteLine("--------------------------------------------");
                         Console.Write("Enter number of product : ");
                         int number = int.Parse(Console.ReadLine());
@@ -27,56 +24,57 @@ namespace Inventory_Management
                         {
                             Console.WriteLine("--------------------------------------------");
                             Console.WriteLine(">> Product number {0}", j + 1);
-                            batch.AddProduct
+                            Product product = new Product
                             (
-                                 IO.EnterProductCode(),
-                                 IO.EnterProductName(),
-                                 IO.EnterProductType(),
-                                 IO.EnterAmount(),
-                                 IO.EnterConditionOfProduct(),
-                                 IO.EnterPrice()
+                               IO.EnterAndCheckProductCode(batch),
+                               IO.EnterProductName(),
+                               IO.EnterProductType(),
+                               IO.EnterAmount(),
+                               IO.EnterConditionOfProduct(),
+                               IO.EnterPrice()
                             );
+                            batch.AddProduct(product);
                             IO.ShowMessage(true);
                         }
                         break;
 
-                    case MenuOptions.REMOVE_PRODUCT_BY_CODE:
+                    case 2:
                         IO.ShowMessageRemove(batch.RemoveProductByCode(IO.RemoveProductByCode()));
                         Console.ReadLine();
                         break;
 
-                    case MenuOptions.UPDATE_PRODUCT_BY_CODE:
+                    case 3:
                         IO.ShowMessageUpdate
                            (
-                              batch.UpdateProductByCode
-                                (
-                                   IO.NewProductCode(),
-                                   IO.EnterProductName(),
-                                   IO.EnterProductType(),
-                                   IO.EnterAmount(),
-                                   IO.EnterConditionOfProduct(),
-                                   IO.EnterPrice()
-                                )
+                             batch.UpdateProductByCode
+                               (
+                                  IO.NewProductCode(),
+                                  IO.EnterProductName(),
+                                  IO.EnterProductType(),
+                                  IO.EnterAmount(),
+                                  IO.EnterConditionOfProduct(),
+                                  IO.EnterPrice()
+                               )
                            );
                         Console.ReadKey();
                         break;
 
-                    case MenuOptions.PRINT_ALL_PRODUCT_INFOR:
+                    case 4:
                         IO.ToScreen(batch.GetAllProductInfor());
                         Console.ReadKey();
                         break;
 
-                    case MenuOptions.PRINT_PRODUCT_INFOR_BY_CODE:
+                    case 5:
                         IO.ToScreen(batch.GetProductByCode(IO.ViewProductByCode()).ToString());
                         Console.ReadKey();
                         break;
 
-                    case MenuOptions.PRINT_PRODUCT_INFOR_BY_PRICE:
-                        IO.ToScreen(batch.GetProductByPrice(IO.ViewProductByPrice()).ToString());
+                    case 6:
+                        
                         Console.ReadKey();
                         break;
 
-                    case MenuOptions.EXIT_PROGRAM:
+                    case 7:
                         IO.ShowMessageExit();
                         Console.ReadLine();
                         return;

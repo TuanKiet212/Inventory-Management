@@ -40,7 +40,6 @@ namespace Inventory_Management
             string result = $"\tProduct Code: {ProductCode} | Product Name: {ProductName} | ProductType: {ProductType} | Amount: {Amount} | Condition Of Product: {ConditionOfProduct} | Price: {Price}\n";
             return result;
         }
-
     }
 }
 
