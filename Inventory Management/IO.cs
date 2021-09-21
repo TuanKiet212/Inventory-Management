@@ -57,7 +57,7 @@ namespace Inventory_Management
 
 		public static int RemoveProductByCode()
         {
-			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
 			Console.Write("Enter product code you want to remove        : ");
 			return int.Parse(Console.ReadLine());
 		}
@@ -94,29 +94,23 @@ namespace Inventory_Management
 
 		public static int NewProductCode()
 		{
-			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
 			Console.Write("Enter product code you want to update        : ");
 			return int.Parse(Console.ReadLine());
 		}
 
 		public static int ViewProductByCode()
 		{
-			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
 			Console.Write("Enter product code you want to check        : ");
 			return int.Parse(Console.ReadLine());
 		}
 
 		public static double ViewProductByPrice()
 		{
-			Console.WriteLine("--------------------------------------------");
-			Console.Write("Enter price you want to check        : ");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
+			Console.Write("Enter the average price                     : ");
 			return double.Parse(Console.ReadLine());
-		}
-
-		public static string ViewProductByType()
-		{
-			Console.Write("--------------------------------------------");
-			return Console.ReadLine();
 		}
 
 		public static int EnterIntValue()
@@ -133,14 +127,14 @@ namespace Inventory_Management
 		{
 			if (status)
 			{
-				Console.WriteLine("--------------------------------------------");
+				Console.WriteLine("-----------------------------------------------------------------------------------");
 				Console.WriteLine(">> This product has been stored in stock <<");
 				Console.ReadKey();
 			}
 
 			else
 			{
-				Console.WriteLine("--------------------------------------------");
+				Console.WriteLine("-----------------------------------------------------------------------------------");
 				Console.WriteLine("WARNING!");
 				Console.WriteLine(">> You have a problem filling out the information, please try again <<");
 			}
@@ -148,25 +142,25 @@ namespace Inventory_Management
 
 		public static void ShowMessageRemove(bool status)
         {
-			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
 			Console.WriteLine(">> This product has been removed out of stock <<");
 		}
 
 		public static void ShowMessageUpdate(bool status)
 		{
-			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
 			Console.WriteLine(">> This product has been updated to stock <<");
 		}
 
 		public static void ShowMessageExit()
         {
-			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
 			Console.WriteLine(">> Inventory Program Ended <<");
 		}
 
 		public static void ShowMessageError()
 		{
-			Console.WriteLine("--------------------------------------------");
+			Console.WriteLine("-----------------------------------------------------------------------------------");
 			Console.WriteLine("WARNING!");
 			Console.WriteLine(">> You can only choose one of the 6 options in the menu, please try again <<");
 		}

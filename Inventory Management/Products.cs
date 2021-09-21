@@ -37,7 +37,7 @@ namespace Inventory_Management
 
         public override string ToString()
         {
-            string result = $"\t >>Product Code: {ProductCode} | Product Name: {ProductName} | ProductType: {ProductType} | Amount: {Amount} | Condition Of Product: {ConditionOfProduct} | Price: {Price}\n";
+            string result = $"\tProduct Code: {ProductCode} | Product Name: {ProductName} | ProductType: {ProductType} | Amount: {Amount} | Condition Of Product: {ConditionOfProduct} | Price: {Price}\n";
             return result;
         }
     }

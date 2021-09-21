@@ -22,10 +22,7 @@ namespace Inventory_Management
     {
         private List<Product> product;
 
-        private Batch() 
-        { 
-
-        }
+        private Batch()  { }
 
         public Batch(string name)
         {
@@ -63,13 +60,11 @@ namespace Inventory_Management
             Product productInBatch = product.FirstOrDefault(s => s.ProductCode.Equals(productCode));
 
             if (productInBatch == null) return false;
-
             productInBatch.ProductName = productName;
             productInBatch.ProductType = productType;
             productInBatch.Amount = amount;
             productInBatch.ConditionOfProduct = conditionOfProduct;
             productInBatch.Price = price;
-
             return true;
         }
         public string GetAllProductInfor()
@@ -90,6 +85,20 @@ namespace Inventory_Management
                 return null;
             }
             return productInBatch;
+        }
+
+        public string GetProductByPriceRange(double price)
+        {
+            string range = " ";
+            Console.Write("Enter the lowest price                      : ");
+            double x = double.Parse(Console.ReadLine());
+            Console.Write("Enter the highest price                     : ");
+            double y = double.Parse(Console.ReadLine());
+            foreach (var s in product.Where(s => x <= s.Price && s.Price <= y))
+            {
+                range = range + s.ToString();
+            }
+            return range;
         }
     }
 }

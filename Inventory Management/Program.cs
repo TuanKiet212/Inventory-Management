@@ -8,7 +8,6 @@ namespace Inventory_Management
         {
             Batch batch = new Batch("");
             int inputMenu = 0;
-
             while (inputMenu != MenuOptions.EXIT_PROGRAM)
             {
                 Console.Clear();
@@ -17,12 +16,12 @@ namespace Inventory_Management
                 switch (inputMenu)
                 {
                     case 1:
-                        Console.WriteLine("--------------------------------------------");
+                        Console.WriteLine("-----------------------------------------------------------------------------------");
                         Console.Write("Enter number of product : ");
                         int number = int.Parse(Console.ReadLine());
                         for (int j = 0; j < number; j++)
                         {
-                            Console.WriteLine("--------------------------------------------");
+                            Console.WriteLine("-----------------------------------------------------------------------------------");
                             Console.WriteLine(">> Product number {0}", j + 1);
                             Product product = new Product
                             (
@@ -70,7 +69,7 @@ namespace Inventory_Management
                         break;
 
                     case 6:
-                        
+                        IO.ToScreen(batch.GetProductByPriceRange(IO.ViewProductByPrice()));
                         Console.ReadKey();
                         break;
 
